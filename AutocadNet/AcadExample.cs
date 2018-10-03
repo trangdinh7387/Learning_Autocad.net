@@ -29,7 +29,7 @@ namespace AcadUtilities
         }
 		#endregion
 		//#region Vẽ đường tròn
-		//[CommandMethod("DrawCircle")]
+		//[CommandMethod("DrawCircle")uh?
 		//public void DrawCirlce()
 		//{
 		//	//Get curren drawing and database
@@ -249,17 +249,6 @@ namespace AcadUtilities
                 tr.Commit();
             }
         }
-        [CommandMethod("Myfilter")]
-        public void MyfilterPolyline()
-        {
-            Editor acEditor = acadFuncs.GetEditor();
-            TypedValue[] filterslist = new TypedValue[1]
-            {
-                new TypedValue(0,"LWPOLYLINE")
-            };
-            PromptSelectionResult acSSRes = acEditor.GetSelection(new SelectionFilter(filterslist));
-            acEditor.SetImpliedSelection(acSSRes.Value);
-        }
         [CommandMethod("DVT")]
         public void ChangeColor_Objects()
         {
@@ -299,21 +288,11 @@ namespace AcadUtilities
                                 {
                                     CircularArc2d ArcSeg = acPolyline.GetArcSegment2dAt(i);
                                     segLen = ArcSeg.GetLength(ArcSeg.GetParameterOf(ArcSeg.StartPoint), ArcSeg.GetParameterOf(ArcSeg.EndPoint));
-                                    midpoint = ArcSeg.GetParameterAtLength()
                                 }
-                                using (DBText objText = new DBText())
-                                {
-                                    objText.Height = 1;
-                                    objText.TextString = Math.Round(segLen, 3).ToString();
-                                    objText.Position = midpoint;
-                                    objText.Justify = AttachmentPoint.MiddleCenter;
-                                    objText.AlignmentPoint = midpoint;
-                                    objText.Rotation = txtAngle;
-                                    acModel.UpgradeOpen();
-                                    acModel.AppendEntity(objText);
-                                    acTrans.AddNewlyCreatedDBObject(objText, true);
-                                }
-                                //acEditor.WriteMessage("\n" + segment.Length.ToString() + "-" + midpoint.ToString());
+                                DBText objText = AddNewEnt.addText(midpoint, Math.Round(segLen, 3).ToString(), 1,0,AttachmentPoint.MiddleCenter);
+                                acModel.UpgradeOpen();
+                                acModel.AppendEntity(objText);
+                                acTrans.AddNewlyCreatedDBObject(objText, true);
 
                             }
                         }

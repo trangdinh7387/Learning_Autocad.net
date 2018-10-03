@@ -68,4 +68,20 @@ namespace acadFunSpace
             else return null;
         }
 	}
+    public class AddNewEnt
+    {
+        public static DBText addText(Point3d txtPos,string txtContents,double txtHeight,double txtAngle = 0,AttachmentPoint txtJust = AttachmentPoint.MiddleCenter)
+        {
+            using (DBText objText = new DBText())
+            {
+                objText.Height = txtHeight;
+                objText.TextString = txtContents;
+                objText.Position = txtPos;
+                objText.Justify = txtJust;
+                objText.AlignmentPoint = txtPos;
+                objText.Rotation = txtAngle;
+                return objText;
+            }
+        }
+    }
 }

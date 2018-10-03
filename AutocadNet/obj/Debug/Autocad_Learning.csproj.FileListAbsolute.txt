@@ -1,0 +1,5 @@
+D:\2. KIRA\VBNet\Learning_Autocad.net\AutocadNet\bin\Debug\AutocadNet.dll
+D:\2. KIRA\VBNet\Learning_Autocad.net\AutocadNet\bin\Debug\AutocadNet.pdb
+D:\2. KIRA\VBNet\Learning_Autocad.net\AutocadNet\obj\Debug\AutocadNet.dll
+D:\2. KIRA\VBNet\Learning_Autocad.net\AutocadNet\obj\Debug\AutocadNet.pdb
+D:\2. KIRA\VBNet\Learning_Autocad.net\AutocadNet\obj\Debug\Autocad_Learning.csprojResolveAssemblyReference.cache
